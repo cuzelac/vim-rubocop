@@ -16,6 +16,10 @@ You can use the `:RuboCop` command to run RuboCop and display the results.
 
 You can also use the `:RuboCop` command together with options. For example, `:RuboCop -l`, `:RuboCop -a` and so on.
 
+You can use the `:RuboCopAutoCorrect` command to write out your buffer,
+run `rubocop -a` on the file and re-open it in your buffer.  This will
+prevent the results window from opening.
+
 ### Configuration File
 
 To run with the specified configuration file, add the following line to your `.vimrc` file:
@@ -40,8 +44,12 @@ In the quickfix window, you can use:
     gv   to open in vertical split silently
     q    to close the quickfix window
 
-Additionally, the plugin registers `<Leader>ru` in normal mode
-for triggering it easily. You can disable these default mappings by setting
+Additionally, the plugin registers:
+
+* `<Leader>ru` in normal mode for triggering `:RuboCop`
+* `<Leader>ra` in normal mode for triggering `:RuboCopAutoCorrect`
+
+You can disable these default mappings by setting
 `g:vimrubocop_keymap` in your `.vimrc` file, and then remap them differently.
 
 For instance, to trigger RuboCop by pressing `<Leader>r` you can put the following in
@@ -50,6 +58,7 @@ your `.vimrc`:
 ```viml
 let g:vimrubocop_keymap = 0
 nmap <Leader>r :RuboCop<CR>
+nmap <Leader>a :RuboCopAutoCorrect<CR>
 ```
 
 ## License
